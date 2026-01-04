@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Enquiry Form - CodeWave Designs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        input.invalid,
+        textarea.invalid,
+        select.invalid {
+            border-color: #e74c3c;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Success Message Styles */
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: slideDown 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h2 {
+            color: #155724;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            color: #155724;
+            font-size: 14px;
+        }
+
+        .success-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-wrapper {
+            display: block;
+        }
+
+        .form-wrapper.hide {
+            display: none;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+
+        .reset-btn:hover {
+            box-shadow: 0 10px 20px rgba(108, 117, 125, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">✓</div>
+            <h2>Thank You!</h2>
+            <p>Your enquiry has been submitted successfully. We'll get back to you shortly.</p>
+        </div>
+
+        <div class="form-wrapper" id="formWrapper">
+            <div class="header">
+                <h1>Project Enquiry Form</h1>
+                <p>Tell us about your project and we'll help bring your vision to life</p>
+            </div>
+
+            <form id="enquiryForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                        <div class="error" id="fullNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error" id="emailError"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <div class="error" id="phoneError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectType">Project Type *</label>
+                    <select id="projectType" name="projectType" required>
+                        <option value="">-- Select a project type --</option>
+                        <option value="web-design">Web Design</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-app">Mobile App Development</option>
+                        <option value="graphic-design">Graphic Design</option>
+                        <option value="branding">Branding</option>
+                        <option value="ui-ux">UI/UX Design</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error" id="projectTypeError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget">
+                        <option value="">-- Select budget range --</option>
+                        <option value="under-5k">Under $5,000</option>
+                        <option value="5k-10k">$5,000 - $10,000</option>
+                        <option value="10k-25k">$10,000 - $25,000</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="above-50k">Above $50,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDeadline">Project Deadline</label>
+                    <input type="date" id="projectDeadline" name="projectDeadline">
+                    <div class="error" id="deadlineError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" name="projectDescription" placeholder="Please describe your project in detail..." required></textarea>
+                    <div class="error" id="descriptionError"></div>
+                </div>
+
+                <button type="submit">Submit Enquiry</button>
+                <button type="reset" class="reset-btn">Clear Form</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('enquiryForm');
+        const successMessage = document.getElementById('successMessage');
+        const formWrapper = document.getElementById('formWrapper');
+
+        // Validation rules
+        const validationRules = {
+            fullName: {
+                required: true,
+                minLength: 2,
+                pattern: /^[a-zA-Z\s]*$/,
+                errorMessages: {
+                    required: 'Full name is required',
+                    minLength: 'Full name must be at least 2 characters',
+                    pattern: 'Full name should only contain letters and spaces'
+                }
+            },
+            email: {
+                required: true,
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                errorMessages: {
+                    required: 'Email address is required',
+                    pattern: 'Please enter a valid email address'
+                }
+            },
+            phone: {
+                pattern: /^[\d\s\-\+\(\)]*$/,
+                minLength: 10,
+                errorMessages: {
+                    pattern: 'Please enter a valid phone number',
+                    minLength: 'Phone number must be at least 10 digits'
+                }
+            },
+            projectType: {
+                required: true,
+                errorMessages: {
+                    required: 'Please select a project type'
+                }
+            },
+            projectDeadline: {
+                customValidator: validateDeadline,
+                errorMessages: {
+                    customValidator: 'Project deadline must be in the future'
+                }
+            },
+            projectDescription: {
+                required: true,
+                minLength: 10,
+                errorMessages: {
+                    required: 'Project description is required',
+                    minLength: 'Project description must be at least 10 characters'
+                }
+            }
+        };
+
+        // Custom validator for deadline
+        function validateDeadline(value) {
+            if (!value) return true; // Not required
+            const selectedDate = new Date(value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return selectedDate >= today;
+        }
+
+        // Validate individual field
+        function validateField(fieldName) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            const rules = validationRules[fieldName];
+            let isValid = true;
+            let errorMessage = '';
+
+            if (!rules) return true;
+
+            const value = field.value.trim();
+
+            // Check required
+            if (rules.required && !value) {
+                isValid = false;
+                errorMessage = rules.errorMessages.required;
+            }
+            // Check minimum length
+            else if (rules.minLength && value && value.length < rules.minLength) {
+                isValid = false;
+                errorMessage = rules.errorMessages.minLength;
+            }
+            // Check pattern
+            else if (rules.pattern && value && !rules.pattern.test(value)) {
+                isValid = false;
+                errorMessage = rules.errorMessages.pattern;
+            }
+            // Check custom validator
+            else if (rules.customValidator && !rules.customValidator(value)) {
+                isValid = false;
+                errorMessage = rules.errorMessages.customValidator;
+            }
+
+            // Update UI
+            if (isValid) {
+                field.classList.remove('invalid');
+                errorElement.classList.remove('show');
+                errorElement.textContent = '';
+            } else {
+                field.classList.add('invalid');
+                errorElement.classList.add('show');
+                errorElement.textContent = errorMessage;
+            }
+
+            return isValid;
+        }
+
+        // Validate entire form
+        function validateForm() {
+            const fieldsToValidate = ['fullName', 'email', 'phone', 'projectType', 'projectDeadline', 'projectDescription'];
+            let isFormValid = true;
+
+            fieldsToValidate.forEach(fieldName => {
+                if (!validateField(fieldName)) {
+                    isFormValid = false;
+                }
+            });
+
+            return isFormValid;
+        }
+
+        // Real-time validation on blur
+        Object.keys(validationRules).forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                field.addEventListener('blur', () => validateField(fieldName));
+                field.addEventListener('change', () => validateField(fieldName));
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (validateForm()) {
+                // Simulate form submission
+                console.log('Form submitted successfully!');
+                
+                // Collect form data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                console.log('Form Data:', data);
+
+                // Show success message
+                formWrapper.classList.add('hide');
+                successMessage.classList.add('show');
+
+                // Optional: Reset form for next use
+                form.reset();
+
+                // Optional: Redirect or perform additional actions after 3 seconds
+                setTimeout(() => {
+                    // Uncomment the line below to redirect after successful submission
+                    // window.location.href = '/thank-you.html';
+                }, 3000);
+            }
+        });
+
+        // Reset form handler
+        form.addEventListener('reset', function() {
+            // Clear all error states
+            document.querySelectorAll('.error').forEach(error => {
+                error.classList.remove('show');
+                error.textContent = '';
+            });
+            document.querySelectorAll('input, textarea, select').forEach(field => {
+                field.classList.remove('invalid');
+            });
+        });
+    </script>
+</body>
+</html>
