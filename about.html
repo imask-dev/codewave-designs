@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CodeWave Designs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        section {
+            margin: 60px 0;
+        }
+        
+        section h2 {
+            font-size: 2.2em;
+            color: #667eea;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        .mission, .vision, .values {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .mission h3, .vision h3 {
+            font-size: 1.5em;
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+        
+        .mission p, .vision p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+            border-top: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .value-card h4 {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 12px;
+        }
+        
+        .value-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .expertise-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            border-bottom: 4px solid #764ba2;
+        }
+        
+        .expertise-item h3 {
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .expertise-item ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .expertise-item li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .expertise-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            section h2 {
+                font-size: 1.8em;
+            }
+            
+            .values-grid, .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About CodeWave Designs</h1>
+        <p>Transforming Ideas into Digital Excellence</p>
+    </header>
+    
+    <div class="container">
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <div class="mission">
+                <h3>Empowering Businesses Through Design Innovation</h3>
+                <p>
+                    At CodeWave Designs, our mission is to empower businesses of all sizes by creating exceptional 
+                    digital experiences that drive growth and innovation. We believe in the power of thoughtful design 
+                    combined with cutting-edge technology to solve real-world problems and create lasting impact. 
+                    We are committed to delivering solutions that not only meet but exceed our clients' expectations, 
+                    helping them stay ahead in an ever-evolving digital landscape.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Vision Section -->
+        <section class="vision-section">
+            <h2>Our Vision</h2>
+            <div class="vision">
+                <h3>Leading the Future of Digital Transformation</h3>
+                <p>
+                    We envision a world where technology and design seamlessly work together to create intuitive, 
+                    beautiful, and impactful digital solutions. Our vision is to be the go-to design partner for 
+                    forward-thinking organizations that value innovation, quality, and user-centric design. 
+                    We aim to set industry standards for excellence and inspire the next generation of digital creators 
+                    and problem-solvers globally.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>🎯 Excellence</h4>
+                    <p>
+                        We pursue perfection in every detail, from initial concept to final deployment. 
+                        Excellence is not a destination but a continuous journey of improvement and innovation.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <h4>🤝 Collaboration</h4>
+                    <p>
+                        We believe in the power of teamwork and open communication. Our success is built on 
+                        strong partnerships with clients, team members, and stakeholders who share our vision.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <h4>💡 Innovation</h4>
+                    <p>
+                        We embrace creative thinking and constantly explore new technologies and methodologies. 
+                        Innovation drives us to challenge the status quo and deliver groundbreaking solutions.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <h4>👥 User-Centric Design</h4>
+                    <p>
+                        Every design decision is guided by understanding and empathy for our end users. 
+                        We create experiences that are intuitive, accessible, and delight users at every interaction.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <h4>🔒 Integrity</h4>
+                    <p>
+                        We operate with honesty, transparency, and ethical standards in all our business practices. 
+                        Trust is earned through consistent, principled action.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <h4>🚀 Continuous Learning</h4>
+                    <p>
+                        We invest in our team's growth and stay updated with the latest industry trends and technologies. 
+                        Lifelong learning is fundamental to our culture and success.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Expertise Section -->
+        <section class="expertise-section">
+            <h2>Our Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h3>Web Design & Development</h3>
+                    <ul>
+                        <li>Responsive and mobile-first design</li>
+                        <li>Frontend development with modern frameworks</li>
+                        <li>Backend integration and API development</li>
+                        <li>Performance optimization</li>
+                        <li>Progressive Web Apps (PWA)</li>
+                        <li>E-commerce solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>User Experience (UX) & Interface Design (UI)</h3>
+                    <ul>
+                        <li>User research and usability testing</li>
+                        <li>Wireframing and prototyping</li>
+                        <li>Information architecture</li>
+                        <li>Interaction design</li>
+                        <li>Design systems and component libraries</li>
+                        <li>Accessibility compliance (WCAG)</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Brand Identity & Visual Design</h3>
+                    <ul>
+                        <li>Logo and brand identity design</li>
+                        <li>Typography and color strategy</li>
+                        <li>Brand guidelines development</li>
+                        <li>Marketing collateral design</li>
+                        <li>Illustration and custom graphics</li>
+                        <li>Visual storytelling</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Digital Strategy & Consulting</h3>
+                    <ul>
+                        <li>Digital transformation strategy</li>
+                        <li>User journey mapping</li>
+                        <li>Market research and competitive analysis</li>
+                        <li>Product strategy and planning</li>
+                        <li>Technology recommendations</li>
+                        <li>Performance analytics and optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Mobile App Design</h3>
+                    <ul>
+                        <li>iOS and Android design patterns</li>
+                        <li>Native and cross-platform solutions</li>
+                        <li>App prototyping and testing</li>
+                        <li>Gesture and interaction design</li>
+                        <li>Mobile payment integration</li>
+                        <li>Push notification strategies</li>
+                    </ul>
+                </div>
+                
+                <div class="expertise-item">
+                    <h3>Quality Assurance & Testing</h3>
+                    <ul>
+                        <li>Functional and regression testing</li>
+                        <li>Cross-browser compatibility testing</li>
+                        <li>Performance testing and optimization</li>
+                        <li>Security testing and audits</li>
+                        <li>Automated testing frameworks</li>
+                        <li>User acceptance testing (UAT)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 CodeWave Designs. All rights reserved.</p>
+        <p>Transforming digital experiences, one wave at a time.</p>
+    </footer>
+</body>
+</html>
